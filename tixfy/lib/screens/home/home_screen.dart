@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tixfy/screens/home/sections/carousel_section.dart';
 import 'package:tixfy/utils/colors/tixfy_colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -39,6 +40,16 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ],
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            children: const [
+              CarouselSection(),
+            ],
+          ),
+        ),
       ),
     );
   }
