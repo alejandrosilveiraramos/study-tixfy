@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tixfy/screens/home/sections/cards_slider_section.dart';
 import 'package:tixfy/screens/home/sections/carousel_section.dart';
 import 'package:tixfy/utils/colors/tixfy_colors.dart';
 
@@ -45,8 +46,45 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
           color: Colors.white,
           child: Column(
-            children: const [
-              CarouselSection(),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CarouselSection(),
+              Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'Em alta',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: tixPrimary,
+                        height: 3.5,
+                      ),
+                    ),
+                    CardsSliderSection(),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'Shows',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: tixPrimary,
+                        height: 3.5,
+                      ),
+                    ),
+                    CardsSliderSection(),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
