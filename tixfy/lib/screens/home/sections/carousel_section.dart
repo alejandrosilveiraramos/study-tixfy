@@ -1,5 +1,3 @@
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:tixfy/utils/colors/tixfy_colors.dart';
 
@@ -7,13 +5,13 @@ class CarouselSection extends StatefulWidget {
   const CarouselSection({Key? key}) : super(key: key);
 
   @override
-  State<CarouselSection> createState() => _CarouselSectionState();
+  CarouselSectionState createState() => CarouselSectionState();
 }
 
-class _CarouselSectionState extends State<CarouselSection> {
-  int _currentSlide = 0;
+class CarouselSectionState extends State<CarouselSection> {
+  int _currentIndex = 0;
 
-  final List<String> images = [
+  final List<String> _images = [
     'assets/images/skankBanner.png',
     'assets/images/blackBanner.png',
     'assets/images/wesleyBanner.png',
@@ -21,52 +19,52 @@ class _CarouselSectionState extends State<CarouselSection> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        CarouselSlider(
-          options: CarouselOptions(
-            height: 200.0,
-            autoPlay: true,
-            enlargeCenterPage: true,
-            aspectRatio: 16 / 9,
-            onPageChanged: (index, reason) {
-              setState(() {
-                _currentSlide = index;
-              });
-            },
-          ),
-          items: images.map((image) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  child: Image.asset(
-                    image,
-                    fit: BoxFit.cover,
-                  ),
-                );
-              },
-            );
-          }).toList(),
+        Image.asset(
+          _images[_currentIndex],
+          fit: BoxFit.cover,
+          width: double.infinity,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: images.map((image) {
-            int index = images.indexOf(image);
-            return Container(
-              width: 8.0,
-              height: 8.0,
-              margin: const EdgeInsets.symmetric(horizontal: 2.0),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: _currentSlide == index ? tixPrimary : tixMedium,
-              ),
-            );
-          }).toList(),
+        Positioned.fill(
+          child: Align(
+            alignment: Alignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _currentIndex = (_currentIndex - 1) % _images.length;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      backgroundColor: tixSecondary),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: tixLight,
+                    size: 18,
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _currentIndex = (_currentIndex + 1) % _images.length;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      backgroundColor: tixSecondary),
+                  child: const Icon(
+                    Icons.arrow_forward,
+                    color: tixLight,
+                    size: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );

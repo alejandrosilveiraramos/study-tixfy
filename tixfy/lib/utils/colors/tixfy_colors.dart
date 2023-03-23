@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const Color tixPrimary = Color(0xFFFF0047);
-const Color tixSecondary = Color(0x00000000);
+const Color tixSecondary = Color(0xff000000);
 const Color tixLight = Color(0xFFF0F1F5);
 const Color tixMedium = Color(0xFF7D7D7D);
 const Color tixDark = Color(0xFF323F38);

@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: tixPrimary,
         centerTitle: false,
-        elevation: 1,
+        elevation: 01,
         title: Padding(
           padding: const EdgeInsets.only(left: 4),
           child: Image.asset(
