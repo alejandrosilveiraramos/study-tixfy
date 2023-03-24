@@ -48,43 +48,36 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // First Section Carousel Section --Start
               const CarouselSection(),
-              Padding(
-                padding: const EdgeInsets.only(left: 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Em alta',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: tixPrimary,
-                        height: 3.5,
-                      ),
-                    ),
-                    CardsSliderSection(),
-                  ],
+              // First Section Carousel Section --End
+              // Card Sliders Sections --Start
+
+              const Padding(
+                padding: EdgeInsets.only(left: 12, top: 10),
+                child: Text(
+                  'Card Slider Section',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: tixPrimary,
+                  ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Shows',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: tixPrimary,
-                        height: 3.5,
-                      ),
-                    ),
-                    CardsSliderSection(),
-                  ],
+              SizedBox(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(children: const [
+                      CardsSliderSection(),
+                      CardsSliderSection(),
+                      CardsSliderSection(),
+                    ]),
+                  ),
                 ),
-              ),
+              )
+              // Card Sliders Sections --End
             ],
           ),
         ),
