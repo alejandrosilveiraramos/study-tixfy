@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:tixfy/models/card_data.dart';
 import 'package:tixfy/utils/colors/tixfy_colors.dart';
 
-class CardsSliderSection extends StatelessWidget {
-  final CardData cardData;
+class CardsSliderSection extends StatefulWidget {
+  const CardsSliderSection({Key? key}) : super(key: key);
 
-  const CardsSliderSection({Key? key, required this.cardData})
-      : super(key: key);
+  @override
+  CardsSliderSectionState createState() => CardsSliderSectionState();
+}
+
+class CardsSliderSectionState extends State<CardsSliderSection> {
+  final String _images = 'assets/images/moQuiridoBanner.jpeg';
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300,
+      width: 260,
+      height: 348,
       child: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10),
+        padding: const EdgeInsets.only(left: 10),
         child: Card(
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -29,51 +33,47 @@ class CardsSliderSection extends StatelessWidget {
                       topLeft: Radius.circular(4),
                       topRight: Radius.circular(4)),
                   child: Image.asset(
-                    cardData.image,
+                    _images,
                     fit: BoxFit.cover,
                     width: double.infinity,
                   ),
                 ),
               ),
               const SizedBox(height: 16),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 child: Text(
-                  cardData.title,
-                  style: const TextStyle(
+                  'Camarote Mô Quirino, Carnaval Floripa 2023',
+                  style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 child: Text(
-                  cardData.date,
-                  style: const TextStyle(
+                  'Sáb, 18 de Fevereiro',
+                  style: TextStyle(
                     fontSize: 12,
                     color: tixPrimary,
                   ),
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 child: Text(
-                  cardData.openingTime,
-                  style: const TextStyle(
+                  'Abertura: 20:00',
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                   ),
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 child: Text(
-                  cardData.location,
-                  style: const TextStyle(
+                  'Passarela Nego Quirino, Florianópolis - SC',
+                  style: TextStyle(
                     fontSize: 12,
                     color: tixMedium,
                   ),

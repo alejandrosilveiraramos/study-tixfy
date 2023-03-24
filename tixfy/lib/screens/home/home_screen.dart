@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tixfy/models/card_data.dart';
 import 'package:tixfy/screens/home/sections/cards_slider_section.dart';
 import 'package:tixfy/screens/home/sections/carousel_section.dart';
+import 'package:tixfy/screens/home/sections/expansion_panel_home_section.dart';
 import 'package:tixfy/utils/colors/tixfy_colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,6 +13,23 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<CardData> cardDataList = [
+    CardData(
+      image: 'assets/images/cardSliderBanner/moQuiridoBanner.jpeg',
+      title: 'Camarote Mô Quirino, Carnaval Floripa 2023',
+      date: 'Sáb, 18 de Fevereiro',
+      openingTime: 'Abertura: 20:00',
+      location: 'Passarela Nego Quirino, Florianópolis - SC',
+    ),
+    CardData(
+      image: 'assets/images/cardSliderBanner/warungBanner.png',
+      title: 'Warung Beach Club MATHAME, COLYN E MAIS!',
+      date: 'Sex, 03 de Fevereiro',
+      openingTime: 'Abertura 22:00 - Início 22:00',
+      location: 'Warung Beach Club, Itajai - SC',
+    )
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +61,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          color: Colors.white,
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -52,11 +71,10 @@ class _HomeScreenState extends State<HomeScreen> {
               const CarouselSection(),
               // First Section Carousel Section --End
               // Card Sliders Sections --Start
-
               const Padding(
                 padding: EdgeInsets.only(left: 12, top: 10),
                 child: Text(
-                  'Card Slider Section',
+                  'Em Alta',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -65,18 +83,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(
+                height: 380,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: SingleChildScrollView(
+                  child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    child: Row(children: const [
-                      CardsSliderSection(),
-                      CardsSliderSection(),
-                      CardsSliderSection(),
-                    ]),
+                    itemCount: cardDataList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return CardsSliderSection(
+                        cardData: cardDataList[index],
+                      );
+                    },
                   ),
                 ),
-              )
+              ),
+              const ExpansionPanelHome(
+                title: 'Quem somos',
+                paragraph:
+                    'Quem Somos Paragraph Lorem Lorem Lorem  Lorem  Lorem  Lorem  Lorem  Lorem  Lorem  ',
+              ),
               // Card Sliders Sections --End
             ],
           ),
