@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:tixfy/models/Expansion_Panel_data.dart';
+//model
+import 'package:tixfy/models/expansion_panel_data.dart';
+//theme
 import 'package:tixfy/utils/colors/tixfy_colors.dart';
 
 class ExpansionPanelHome extends StatefulWidget {
-  final String title;
-  final String paragraph;
+  final ExpansionPanelData expansionPanelData;
 
   const ExpansionPanelHome({
     Key? key,
-    required this.title,
-    required this.paragraph,
+    required this.expansionPanelData,
   }) : super(key: key);
 
   @override
@@ -27,34 +27,36 @@ class _ExpansionPanelHomeState extends State<ExpansionPanelHome> {
         textTheme: const TextTheme(
           bodyMedium: TextStyle(color: tixLight),
         ),
+        iconTheme: const IconThemeData(
+          color: tixLight,
+        ),
       ),
-      child: ExpansionPanelTheme(
-        data: ExpansionPanelThemeData(
-          iconColor: Colors.blue, // set the custom color for the expansion icon
-        ),
-        child: ExpansionPanelList(
-          expansionCallback: (int index, bool isExpanded) {
-            setState(() {
-              _isExpanded = !isExpanded;
-            });
-          },
-          children: [
-            ExpansionPanel(
-              headerBuilder: (BuildContext context, bool isExpanded) {
-                return ListTile(
-                  title: Text(widget.title),
-                );
-              },
-              body: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  widget.paragraph,
-                ),
+      child: ExpansionPanelList(
+        animationDuration: const Duration(seconds: 1),
+        dividerColor: tixLight, // Set divider color here
+        elevation: 1,
+        expandedHeaderPadding: const EdgeInsets.all(8),
+        expansionCallback: (int index, bool isExpanded) {
+          setState(() {
+            _isExpanded = !isExpanded;
+          });
+        },
+        children: [
+          ExpansionPanel(
+            headerBuilder: (BuildContext context, bool isExpanded) {
+              return ListTile(
+                title: Text(widget.expansionPanelData.title),
+              );
+            },
+            body: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                widget.expansionPanelData.paragraph,
               ),
-              isExpanded: _isExpanded,
             ),
-          ],
-        ),
+            isExpanded: _isExpanded,
+          ),
+        ],
       ),
     );
   }

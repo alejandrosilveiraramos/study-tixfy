@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+//components
 import 'package:tixfy/screens/home/home_screen.dart';
-
+//theme
 import 'package:tixfy/utils/colors/tixfy_colors.dart';
 
 void main() {
