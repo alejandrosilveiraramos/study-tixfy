@@ -22,7 +22,7 @@ class HeaderSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.asset(
-            'assets/images/logo.png',
+            'assets/images/logo/logo.png',
             fit: BoxFit.contain,
           ),
           Row(
@@ -33,7 +33,9 @@ class HeaderSection extends StatelessWidget {
                 color: tixLight,
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
                 icon: const Icon(Icons.menu),
                 color: tixLight,
                 padding: const EdgeInsets.only(right: 15),

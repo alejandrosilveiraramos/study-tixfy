@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:tixfy/services/card_data.dart';
-import 'package:tixfy/services/expansion_data.dart';
-//theme
+import 'package:tixfy/screens/home/sections/navbar_section.dart';
+//Theme
 import 'package:tixfy/utils/colors/tixfy_colors.dart';
 //Models
 import 'package:tixfy/models/card_data.dart';
 import 'package:tixfy/models/expansion_panel_data.dart';
-//components
+//Components
 import 'package:tixfy/screens/home/sections/header_section.dart';
 import 'package:tixfy/screens/home/sections/cards_slider_section.dart';
 import 'package:tixfy/screens/home/sections/carousel_section.dart';
 import 'package:tixfy/screens/home/sections/expansion_panel_home_section.dart';
+//Mock
+import 'package:tixfy/mock/card_data.dart';
+import 'package:tixfy/mock/expansion_data.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -29,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const NavBar(),
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: HeaderSection(),
