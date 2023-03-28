@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tixfy/models/card_data.dart';
+import 'package:tixfy/screens/event_detail/principal_event_detail.dart';
 import 'package:tixfy/utils/colors/tixfy_colors.dart';
 
 class CardsSliderSection extends StatelessWidget {
@@ -28,10 +29,20 @@ class CardsSliderSection extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(4),
                       topRight: Radius.circular(4)),
-                  child: Image.asset(
-                    cardData.image,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PrincipalEventDetail(),
+                        ),
+                      );
+                    },
+                    child: Image.asset(
+                      cardData.image,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
                   ),
                 ),
               ),

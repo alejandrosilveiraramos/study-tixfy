@@ -31,32 +31,40 @@ class _ExpansionPanelHomeState extends State<ExpansionPanelHome> {
           color: tixLight,
         ),
       ),
-      child: ExpansionPanelList(
-        animationDuration: const Duration(seconds: 1),
-        dividerColor: tixLight, // Set divider color here
-        elevation: 1,
-        expandedHeaderPadding: const EdgeInsets.all(8),
-        expansionCallback: (int index, bool isExpanded) {
-          setState(() {
-            _isExpanded = !isExpanded;
-          });
-        },
-        children: [
-          ExpansionPanel(
-            headerBuilder: (BuildContext context, bool isExpanded) {
-              return ListTile(
-                title: Text(widget.expansionPanelData.title),
-              );
-            },
-            body: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                widget.expansionPanelData.paragraph,
+      child: Padding(
+        padding:
+            const EdgeInsets.symmetric(vertical: 1), // Add vertical padding
+        child: ExpansionPanelList(
+          animationDuration: const Duration(seconds: 1),
+          dividerColor: tixLight, // Set divider color here
+          elevation: 1,
+          expandedHeaderPadding: const EdgeInsets.all(8),
+          expansionCallback: (int index, bool isExpanded) {
+            setState(() {
+              _isExpanded = !isExpanded;
+            });
+          },
+          children: [
+            ExpansionPanel(
+              headerBuilder: (BuildContext context, bool isExpanded) {
+                return ListTile(
+                  title: Text(widget.expansionPanelData.title),
+                );
+              },
+              body: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16, vertical: 16), // Add horizontal padding
+                child: Align(
+                  alignment: Alignment.topLeft, // Align text to the start
+                  child: Text(
+                    widget.expansionPanelData.paragraph,
+                  ),
+                ),
               ),
+              isExpanded: _isExpanded,
             ),
-            isExpanded: _isExpanded,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

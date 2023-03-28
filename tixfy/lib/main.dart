@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 //components
-import 'package:tixfy/screens/home/home_screen.dart';
 //theme
 import 'package:tixfy/utils/colors/tixfy_colors.dart';
+import 'package:tixfy/utils/routes/tixfy_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: tixSwatch,
       ),
-      home: const HomeScreen(),
+      initialRoute: AppRoutes.home,
+      routes: getRoutes(context),
     );
   }
 }

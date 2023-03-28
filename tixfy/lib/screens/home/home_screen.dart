@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tixfy/screens/home/sections/navbar_section.dart';
 //Theme
 import 'package:tixfy/utils/colors/tixfy_colors.dart';
 //Models
@@ -10,6 +9,7 @@ import 'package:tixfy/screens/home/sections/header_section.dart';
 import 'package:tixfy/screens/home/sections/cards_slider_section.dart';
 import 'package:tixfy/screens/home/sections/carousel_section.dart';
 import 'package:tixfy/screens/home/sections/expansion_panel_home_section.dart';
+import 'package:tixfy/screens/home/sections/navbar_section.dart';
 //Mock
 import 'package:tixfy/mock/card_data.dart';
 import 'package:tixfy/mock/expansion_data.dart';
