@@ -5,8 +5,9 @@ import 'package:tixfy/utils/colors/tixfy_colors.dart';
 
 class CardsSliderSection extends StatelessWidget {
   final CardData cardData;
+  final String id;
 
-  const CardsSliderSection({Key? key, required this.cardData})
+  const CardsSliderSection({Key? key, required this.cardData, required this.id})
       : super(key: key);
 
   @override
@@ -15,29 +16,30 @@ class CardsSliderSection extends StatelessWidget {
       width: 300,
       child: Padding(
         padding: const EdgeInsets.only(left: 10, right: 10),
-        child: Card(
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(4)),
-          ),
-          elevation: 10,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.2,
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4),
-                      topRight: Radius.circular(4)),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const PrincipalEventDetail(),
-                        ),
-                      );
-                    },
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PrincipalEventDetail(cardData: cardData),
+              ),
+            );
+          },
+          child: Card(
+            key: ValueKey<String>(id),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4)),
+            ),
+            elevation: 10,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(4),
+                        topRight: Radius.circular(4)),
                     child: Image.asset(
                       cardData.image,
                       fit: BoxFit.cover,
@@ -45,52 +47,52 @@ class CardsSliderSection extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                child: Text(
-                  cardData.title,
-                  style: const TextStyle(
-                    fontSize: 16,
+                const SizedBox(height: 16),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                  child: Text(
+                    cardData.title,
+                    style: const TextStyle(
+                      fontSize: 16,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                child: Text(
-                  cardData.date,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: tixPrimary,
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                  child: Text(
+                    cardData.date,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: tixPrimary,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                child: Text(
-                  cardData.openingTime,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                  child: Text(
+                    cardData.openingTime,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                child: Text(
-                  cardData.location,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: tixMedium,
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                  child: Text(
+                    cardData.location,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: tixMedium,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
